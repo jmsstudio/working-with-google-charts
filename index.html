@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Google charts API</title>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            function drawChart() {
+                var dataTable = new google.visualization.DataTable();
+                dataTable.addColumn('string', 'Category');
+                dataTable.addColumn('number', 'Value');
+                dataTable.addRows([
+                    ['Education', 2000],
+                    ['Transport', 500],
+                    ['Leisure', 230],
+                    ['Health', 50],
+                    ['Creditcard', 900],
+                    ['Feed', 260],
+                ]);
+                var chartOptions = {
+                    title: 'Expenses',
+                    width: '500',
+                    height: '400',
+                    pieHole: '0.5'
+                }
+
+                var element = document.getElementById('piechart')
+                var piechart = new google.visualization.PieChart(element);
+                piechart.draw(dataTable, chartOptions);
+
+            }
+
+            google.charts.load('current', { packages: ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+        </script>
+    </head>
+
+    <body>
+        <div id="piechart"></div>
+    </body>
+
+</html>
